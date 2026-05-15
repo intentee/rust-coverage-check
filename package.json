@@ -1,0 +1,45 @@
+{
+  "name": "@intentee/rust-coverage-check",
+  "version": "0.1.0",
+  "description": "Gate cargo-llvm-cov coverage by crate.",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "bin": {
+    "rust-coverage-check": "./src/main.mjs"
+  },
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "files": [
+    "src/",
+    "LICENSE",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "coverage": "make coverage",
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intentee/rust-coverage-check.git"
+  },
+  "bugs": {
+    "url": "https://github.com/intentee/rust-coverage-check/issues"
+  },
+  "homepage": "https://github.com/intentee/rust-coverage-check#readme",
+  "license": "MIT",
+  "sideEffects": false,
+  "devDependencies": {
+    "@types/node": "25.8.0",
+    "c8": "11.0.0",
+    "prettier": "3.8.3",
+    "prettier-plugin-organize-imports": "4.2.0",
+    "type-coverage": "2.29.7",
+    "typescript": "6.0.3"
+  }
+}

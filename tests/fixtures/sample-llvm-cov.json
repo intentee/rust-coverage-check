@@ -1,0 +1,1182 @@
+{
+  "data": [
+    {
+      "files": [
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "expansions": [],
+          "filename": "/workspace/spiffe_svid_manager/src/parse_end_entity_cert.rs",
+          "segments": [
+            [7, 1, 11, true, true, false],
+            [9, 41, 0, false, false, false],
+            [10, 5, 11, true, true, false],
+            [10, 28, 0, false, false, false],
+            [10, 29, 11, true, true, false],
+            [10, 39, 0, false, false, false],
+            [10, 41, 11, true, true, false],
+            [10, 48, 0, false, false, false],
+            [10, 55, 2, true, true, false],
+            [10, 56, 0, false, false, false],
+            [11, 9, 2, true, true, false],
+            [11, 14, 0, false, false, false],
+            [13, 9, 2, true, true, false],
+            [13, 65, 0, false, false, false],
+            [14, 5, 2, true, true, false],
+            [14, 6, 0, false, false, false],
+            [15, 1, 11, true, true, false],
+            [15, 2, 0, false, false, false],
+            [27, 5, 1, true, true, false],
+            [27, 27, 0, false, false, false],
+            [28, 13, 1, true, true, false],
+            [28, 17, 0, false, false, false],
+            [28, 20, 1, true, true, false],
+            [28, 40, 0, false, false, false],
+            [28, 41, 1, true, true, false],
+            [28, 75, 0, false, false, false],
+            [28, 76, 1, true, true, false],
+            [28, 82, 0, false, false, false],
+            [30, 9, 1, true, true, false],
+            [30, 16, 0, false, false, false],
+            [30, 17, 1, true, true, false],
+            [30, 45, 0, false, false, false],
+            [30, 46, 1, true, true, false],
+            [30, 51, 0, false, false, false],
+            [31, 5, 1, true, true, false],
+            [31, 6, 0, false, false, false],
+            [34, 5, 1, true, true, false],
+            [34, 29, 0, false, false, false],
+            [35, 13, 1, true, true, false],
+            [35, 17, 0, false, false, false],
+            [35, 20, 1, true, true, false],
+            [35, 40, 0, false, false, false],
+            [35, 41, 1, true, true, false],
+            [35, 45, 0, false, false, false],
+            [37, 13, 1, true, true, false],
+            [37, 18, 0, false, false, false],
+            [37, 21, 1, true, true, false],
+            [37, 42, 0, false, false, false],
+            [37, 43, 1, true, true, false],
+            [37, 48, 0, false, false, false],
+            [37, 50, 1, true, true, false],
+            [37, 53, 0, false, false, false],
+            [37, 56, 1, true, true, false],
+            [37, 62, 0, false, false, false],
+            [39, 9, 1, true, true, false],
+            [39, 19, 0, false, false, false],
+            [43, 5, 1, true, true, false],
+            [43, 6, 0, false, false, false]
+          ],
+          "summary": {
+            "branches": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0.0
+            },
+            "mcdc": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0.0
+            },
+            "functions": {
+              "count": 4,
+              "covered": 4,
+              "percent": 100.0
+            },
+            "instantiations": {
+              "count": 6,
+              "covered": 5,
+              "percent": 83.33333333333334
+            },
+            "lines": {
+              "count": 18,
+              "covered": 18,
+              "percent": 100.0
+            },
+            "regions": {
+              "count": 29,
+              "covered": 29,
+              "notcovered": 0,
+              "percent": 100.0
+            }
+          }
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "expansions": [],
+          "filename": "/workspace/spiffe_svid_manager/src/svid_converter_service.rs",
+          "segments": [
+            [29, 5, 6, true, true, false],
+            [29, 86, 0, false, false, false],
+            [29, 87, 6, true, true, false],
+            [29, 88, 0, false, false, false],
+            [30, 13, 5, true, true, false],
+            [30, 25, 0, false, false, false],
+            [30, 27, 5, true, true, false],
+            [30, 36, 0, false, false, false],
+            [30, 39, 6, true, true, false],
+            [30, 51, 0, false, false, false],
+            [30, 52, 6, true, true, false],
+            [30, 64, 0, false, false, false],
+            [30, 67, 6, true, true, false],
+            [30, 77, 0, false, false, false],
+            [30, 81, 1, true, true, false],
+            [30, 82, 0, false, false, false],
+            [31, 13, 1, true, true, false],
+            [31, 20, 0, false, false, false],
+            [32, 9, 1, true, true, false],
+            [32, 10, 0, false, false, false],
+            [32, 11, 1, true, true, false],
+            [32, 12, 0, false, false, false],
+            [34, 9, 5, true, true, false],
+            [34, 39, 0, false, false, false],
+            [35, 14, 4, true, true, false],
+            [35, 17, 0, false, false, false],
+            [35, 23, 4, true, true, false],
+            [35, 31, 0, false, false, false],
+            [35, 32, 5, true, true, false],
+            [35, 58, 0, false, false, false],
+            [35, 59, 5, true, true, false],
+            [35, 71, 0, false, false, false],
+            [35, 72, 1, true, true, false],
+            [35, 73, 0, false, false, false],
+            [36, 9, 4, true, true, false],
+            [36, 26, 0, false, false, false],
+            [37, 14, 3, true, true, false],
+            [37, 18, 0, false, false, false],
+            [37, 19, 4, true, true, false],
+            [37, 36, 0, false, false, false],
+            [37, 37, 4, true, true, false],
+            [37, 49, 0, false, false, false],
+            [37, 51, 4, true, true, false],
+            [37, 64, 0, false, false, false],
+            [37, 65, 1, true, true, false],
+            [37, 66, 0, false, false, false],
+            [37, 67, 3, true, true, false],
+            [37, 71, 0, false, false, false],
+            [37, 74, 1, true, true, false],
+            [37, 75, 0, false, false, false],
+            [39, 9, 2, true, true, false],
+            [39, 15, 0, false, false, false],
+            [40, 5, 6, true, true, false],
+            [40, 6, 0, false, false, false],
+            [45, 82, 2, true, true, false],
+            [45, 83, 0, false, false, false],
+            [68, 5, 2, true, true, false],
+            [68, 6, 0, false, false, false],
+            [92, 5, 4, true, true, false],
+            [94, 30, 0, false, false, false],
+            [95, 14, 4, true, true, false],
+            [95, 30, 0, false, false, false],
+            [95, 32, 4, true, true, false],
+            [95, 47, 0, false, false, false],
+            [95, 51, 4, true, true, false],
+            [95, 72, 0, false, false, false],
+            [97, 9, 4, true, true, false],
+            [98, 13, 4, true, true, false],
+            [98, 25, 4, true, false, false],
+            [101, 10, 0, false, false, false],
+            [102, 5, 4, true, true, false],
+            [102, 6, 0, false, false, false],
+            [105, 11, 1, true, true, false],
+            [105, 54, 0, false, false, false],
+            [105, 55, 1, true, true, false],
+            [105, 56, 0, false, false, false],
+            [106, 14, 1, true, true, false],
+            [106, 26, 0, false, false, false],
+            [106, 28, 1, true, true, false],
+            [106, 41, 0, false, false, false],
+            [106, 45, 1, true, true, false],
+            [106, 66, 0, false, false, false],
+            [107, 13, 1, true, true, false],
+            [107, 20, 0, false, false, false],
+            [107, 23, 1, true, true, false],
+            [107, 46, 0, false, false, false],
+            [107, 47, 1, true, true, false],
+            [107, 59, 0, false, false, false],
+            [109, 13, 1, true, true, false],
+            [109, 19, 0, false, false, false],
+            [109, 22, 1, true, true, false],
+            [109, 29, 1, true, false, false],
+            [110, 14, 1, true, true, false],
+            [110, 34, 1, true, false, false],
+            [110, 35, 1, true, true, false],
+            [110, 51, 1, true, false, false],
+            [110, 52, 1, true, true, false],
+            [110, 56, 1, true, false, false],
+            [111, 19, 0, false, false, false],
+            [113, 9, 1, true, true, false],
+            [113, 16, 1, true, false, false],
+            [113, 17, 1, true, true, false],
+            [113, 23, 1, true, false, false],
+            [113, 24, 1, true, true, false],
+            [113, 30, 1, true, false, false],
+            [113, 34, 0, false, false, false],
+            [114, 5, 1, true, true, false],
+            [114, 6, 0, false, false, false],
+            [117, 11, 1, true, true, false],
+            [117, 74, 0, false, false, false],
+            [117, 75, 1, true, true, false],
+            [117, 76, 0, false, false, false],
+            [118, 14, 1, true, true, false],
+            [118, 26, 0, false, false, false],
+            [118, 28, 1, true, true, false],
+            [118, 41, 0, false, false, false],
+            [118, 45, 1, true, true, false],
+            [118, 66, 0, false, false, false],
+            [119, 13, 1, true, true, false],
+            [119, 20, 0, false, false, false],
+            [119, 23, 1, true, true, false],
+            [119, 46, 0, false, false, false],
+            [119, 47, 1, true, true, false],
+            [119, 59, 0, false, false, false],
+            [121, 13, 1, true, true, false],
+            [121, 27, 0, false, false, false],
+            [121, 30, 1, true, true, false],
+            [121, 76, 0, false, false, false],
+            [121, 77, 1, true, true, false],
+            [121, 83, 0, false, false, false],
+            [122, 13, 1, true, true, false],
+            [122, 17, 0, false, false, false],
+            [123, 13, 1, true, true, false],
+            [123, 37, 0, false, false, false],
+            [123, 38, 1, true, true, false],
+            [123, 53, 0, false, false, false],
+            [123, 55, 1, true, true, false],
+            [123, 95, 0, false, false, false],
+            [124, 18, 1, true, true, false],
+            [124, 24, 0, false, false, false],
+            [125, 13, 1, true, true, false],
+            [125, 20, 0, false, false, false],
+            [125, 23, 1, true, true, false],
+            [125, 39, 0, false, false, false],
+            [125, 40, 1, true, true, false],
+            [125, 44, 0, false, false, false],
+            [125, 45, 1, true, true, false],
+            [125, 49, 0, false, false, false],
+            [125, 52, 1, true, true, false],
+            [125, 70, 0, false, false, false],
+            [127, 13, 1, true, true, false],
+            [127, 19, 0, false, false, false],
+            [127, 22, 1, true, true, false],
+            [127, 29, 1, true, false, false],
+            [127, 30, 1, true, true, false],
+            [127, 50, 1, true, false, false],
+            [127, 65, 0, false, false, false],
+            [129, 9, 1, true, true, false],
+            [129, 16, 1, true, false, false],
+            [129, 17, 1, true, true, false],
+            [129, 23, 1, true, false, false],
+            [129, 24, 1, true, true, false],
+            [129, 30, 1, true, false, false],
+            [129, 34, 0, false, false, false],
+            [130, 5, 1, true, true, false],
+            [130, 6, 0, false, false, false],
+            [133, 11, 1, true, true, false],
+            [133, 85, 0, false, false, false],
+            [133, 86, 1, true, true, false],
+            [133, 87, 0, false, false, false],
+            [134, 14, 1, true, true, false],
+            [134, 26, 0, false, false, false],
+            [134, 28, 1, true, true, false],
+            [134, 40, 0, false, false, false],
+            [134, 44, 1, true, true, false],
+            [134, 65, 0, false, false, false],
+            [136, 9, 1, true, true, false],
+            [136, 13, 0, false, false, false],
+            [136, 14, 1, true, true, false],
+            [136, 26, 0, false, false, false],
+            [138, 13, 1, true, true, false],
+            [138, 20, 0, false, false, false],
+            [138, 23, 1, true, true, false],
+            [138, 46, 0, false, false, false],
+            [138, 47, 1, true, true, false],
+            [138, 59, 0, false, false, false],
+            [139, 13, 1, true, true, false],
+            [139, 20, 0, false, false, false],
+            [139, 23, 1, true, true, false],
+            [139, 50, 0, false, false, false],
+            [139, 53, 1, true, true, false],
+            [139, 59, 0, false, false, false],
+            [141, 13, 1, true, true, false],
+            [141, 19, 0, false, false, false],
+            [141, 22, 1, true, true, false],
+            [141, 29, 1, true, false, false],
+            [141, 30, 1, true, true, false],
+            [141, 50, 1, true, false, false],
+            [141, 65, 0, false, false, false],
+            [143, 9, 1, true, true, false],
+            [143, 16, 1, true, false, false],
+            [143, 17, 1, true, true, false],
+            [143, 23, 1, true, false, false],
+            [143, 24, 1, true, true, false],
+            [143, 30, 1, true, false, false],
+            [143, 34, 0, false, false, false],
+            [144, 5, 1, true, true, false],
+            [144, 6, 0, false, false, false],
+            [147, 11, 1, true, true, false],
+            [147, 87, 0, false, false, false],
+            [147, 88, 1, true, true, false],
+            [147, 89, 0, false, false, false],
+            [148, 14, 1, true, true, false],
+            [148, 26, 0, false, false, false],
+            [148, 28, 1, true, true, false],
+            [148, 41, 0, false, false, false],
+            [148, 45, 1, true, true, false],
+            [148, 66, 0, false, false, false],
+            [149, 13, 1, true, true, false],
+            [149, 20, 0, false, false, false],
+            [149, 23, 1, true, true, false],
+            [149, 46, 0, false, false, false],
+            [149, 47, 1, true, true, false],
+            [149, 59, 0, false, false, false],
+            [151, 13, 1, true, true, false],
+            [151, 27, 0, false, false, false],
+            [151, 30, 1, true, true, false],
+            [151, 76, 0, false, false, false],
+            [151, 77, 1, true, true, false],
+            [151, 83, 0, false, false, false],
+            [152, 13, 1, true, true, false],
+            [152, 17, 0, false, false, false],
+            [153, 13, 1, true, true, false],
+            [153, 37, 0, false, false, false],
+            [153, 38, 1, true, true, false],
+            [153, 53, 0, false, false, false],
+            [153, 55, 1, true, true, false],
+            [153, 94, 0, false, false, false],
+            [154, 18, 1, true, true, false],
+            [154, 24, 0, false, false, false],
+            [155, 13, 1, true, true, false],
+            [155, 25, 0, false, false, false],
+            [155, 28, 1, true, true, false],
+            [155, 44, 0, false, false, false],
+            [155, 45, 1, true, true, false],
+            [155, 58, 0, false, false, false],
+            [155, 60, 1, true, true, false],
+            [155, 66, 0, false, false, false],
+            [156, 13, 1, true, true, false],
+            [156, 19, 0, false, false, false],
+            [156, 22, 1, true, true, false],
+            [156, 55, 0, false, false, false],
+            [156, 56, 1, true, true, false],
+            [156, 68, 0, false, false, false],
+            [156, 70, 1, true, true, false],
+            [156, 79, 0, false, false, false],
+            [156, 81, 1, true, true, false],
+            [156, 87, 0, false, false, false],
+            [157, 13, 1, true, true, false],
+            [157, 27, 0, false, false, false],
+            [157, 30, 1, true, true, false],
+            [157, 48, 0, false, false, false],
+            [159, 9, 1, true, true, false],
+            [159, 19, 0, false, false, false],
+            [159, 20, 1, true, true, false],
+            [159, 30, 0, false, false, false],
+            [159, 31, 1, true, true, false],
+            [159, 37, 0, false, false, false],
+            [161, 13, 1, true, true, false],
+            [161, 20, 0, false, false, false],
+            [161, 23, 1, true, true, false],
+            [161, 39, 0, false, false, false],
+            [161, 40, 1, true, true, false],
+            [161, 44, 0, false, false, false],
+            [161, 45, 1, true, true, false],
+            [161, 49, 0, false, false, false],
+            [161, 52, 1, true, true, false],
+            [161, 62, 0, false, false, false],
+            [163, 13, 1, true, true, false],
+            [163, 19, 0, false, false, false],
+            [163, 22, 1, true, true, false],
+            [163, 29, 1, true, false, false],
+            [163, 30, 1, true, true, false],
+            [163, 50, 1, true, false, false],
+            [163, 65, 0, false, false, false],
+            [165, 9, 1, true, true, false],
+            [165, 16, 1, true, false, false],
+            [165, 17, 1, true, true, false],
+            [165, 23, 1, true, false, false],
+            [165, 24, 1, true, true, false],
+            [165, 30, 1, true, false, false],
+            [165, 34, 0, false, false, false],
+            [166, 5, 1, true, true, false],
+            [166, 6, 0, false, false, false]
+          ],
+          "summary": {
+            "branches": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0.0
+            },
+            "mcdc": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0.0
+            },
+            "functions": {
+              "count": 13,
+              "covered": 13,
+              "percent": 100.0
+            },
+            "instantiations": {
+              "count": 17,
+              "covered": 15,
+              "percent": 88.23529411764706
+            },
+            "lines": {
+              "count": 75,
+              "covered": 74,
+              "percent": 98.66666666666667
+            },
+            "regions": {
+              "count": 151,
+              "covered": 150,
+              "notcovered": 1,
+              "percent": 99.33774834437085
+            }
+          }
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "expansions": [],
+          "filename": "/workspace/spiffe_svid_manager_tests/src/pick_free_tcp_port.rs",
+          "segments": [
+            [5, 1, 17, true, true, false],
+            [5, 62, 0, false, false, false],
+            [6, 9, 16, true, true, false],
+            [6, 17, 0, false, false, false],
+            [6, 20, 17, true, true, false],
+            [6, 37, 0, false, false, false],
+            [6, 38, 17, true, true, false],
+            [6, 47, 0, false, false, false],
+            [6, 48, 1, true, true, false],
+            [6, 49, 0, false, false, false],
+            [7, 9, 16, true, true, false],
+            [7, 13, 0, false, false, false],
+            [7, 16, 16, true, true, false],
+            [7, 24, 0, false, false, false],
+            [7, 25, 16, true, true, false],
+            [7, 35, 0, false, false, false],
+            [7, 37, 0, true, true, false],
+            [7, 38, 0, false, false, false],
+            [7, 39, 16, true, true, false],
+            [7, 43, 0, false, false, false],
+            [9, 5, 16, true, true, false],
+            [9, 9, 0, false, false, false],
+            [9, 10, 16, true, true, false],
+            [9, 18, 0, false, false, false],
+            [11, 5, 16, true, true, false],
+            [11, 13, 0, false, false, false],
+            [12, 1, 17, true, true, false],
+            [12, 2, 0, false, false, false],
+            [14, 1, 16, true, true, false],
+            [14, 43, 0, false, false, false],
+            [15, 5, 16, true, true, false],
+            [15, 27, 0, false, false, false],
+            [15, 28, 16, true, true, false],
+            [15, 41, 0, false, false, false],
+            [16, 1, 16, true, true, false],
+            [16, 2, 0, false, false, false],
+            [24, 5, 1, true, true, false],
+            [24, 41, 0, false, false, false],
+            [25, 13, 1, true, true, false],
+            [25, 17, 0, false, false, false],
+            [25, 20, 1, true, true, false],
+            [25, 38, 0, false, false, false],
+            [25, 41, 1, true, true, false],
+            [25, 47, 0, false, false, false],
+            [27, 9, 1, true, true, false],
+            [27, 16, 0, false, false, false],
+            [27, 17, 1, true, true, false],
+            [27, 25, 0, false, false, false],
+            [28, 5, 1, true, true, false],
+            [28, 6, 0, false, false, false],
+            [31, 5, 1, true, true, false],
+            [31, 45, 0, false, false, false],
+            [32, 13, 1, true, true, false],
+            [32, 19, 0, false, false, false],
+            [32, 22, 1, true, true, false],
+            [32, 44, 0, false, false, false],
+            [32, 45, 1, true, true, false],
+            [32, 64, 0, false, false, false],
+            [34, 9, 1, true, true, false],
+            [34, 16, 0, false, false, false],
+            [34, 17, 1, true, true, false],
+            [34, 23, 0, false, false, false],
+            [34, 24, 1, true, true, false],
+            [34, 30, 0, false, false, false],
+            [35, 5, 1, true, true, false],
+            [35, 6, 0, false, false, false]
+          ],
+          "summary": {
+            "branches": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0.0
+            },
+            "mcdc": {
+              "count": 0,
+              "covered": 0,
+              "notcovered": 0,
+              "percent": 0.0
+            },
+            "functions": {
+              "count": 4,
+              "covered": 4,
+              "percent": 100.0
+            },
+            "instantiations": {
+              "count": 6,
+              "covered": 6,
+              "percent": 100.0
+            },
+            "lines": {
+              "count": 17,
+              "covered": 17,
+              "percent": 100.0
+            },
+            "regions": {
+              "count": 33,
+              "covered": 32,
+              "notcovered": 1,
+              "percent": 96.96969696969698
+            }
+          }
+        }
+      ],
+      "functions": [
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 0,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/parse_end_entity_cert.rs"
+          ],
+          "name": "_RNCNvNtCs4eUZF1Sz7bo_19spiffe_svid_manager21parse_end_entity_cert21parse_end_entity_cert0B5_",
+          "regions": [
+            [10, 55, 10, 56, 0, 0, 0, 0],
+            [11, 9, 11, 14, 0, 0, 0, 0],
+            [13, 9, 13, 65, 0, 0, 0, 0],
+            [14, 5, 14, 6, 0, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 0,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNCNCNvMNtCs4eUZF1Sz7bo_19spiffe_svid_manager22svid_converter_serviceNtB6_20SvidConverterService20convert_x509_context00B8_",
+          "regions": [
+            [30, 81, 30, 82, 0, 0, 0, 0],
+            [31, 13, 31, 20, 0, 0, 0, 0],
+            [32, 9, 32, 10, 0, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 2,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNCNvMNtCs4eUZF1Sz7bo_19spiffe_svid_manager22svid_converter_serviceNtB4_20SvidConverterService20convert_x509_context0B6_",
+          "regions": [
+            [29, 87, 29, 88, 2, 0, 0, 0],
+            [30, 13, 30, 25, 2, 0, 0, 0],
+            [30, 27, 30, 36, 2, 0, 0, 0],
+            [30, 39, 30, 51, 2, 0, 0, 0],
+            [30, 52, 30, 64, 2, 0, 0, 0],
+            [30, 67, 30, 77, 2, 0, 0, 0],
+            [32, 11, 32, 12, 0, 0, 0, 0],
+            [34, 9, 34, 39, 2, 0, 0, 0],
+            [35, 14, 35, 17, 2, 0, 0, 0],
+            [35, 23, 35, 31, 2, 0, 0, 0],
+            [35, 32, 35, 58, 2, 0, 0, 0],
+            [35, 59, 35, 71, 2, 0, 0, 0],
+            [35, 72, 35, 73, 0, 0, 0, 0],
+            [36, 9, 36, 26, 2, 0, 0, 0],
+            [37, 14, 37, 18, 2, 0, 0, 0],
+            [37, 19, 37, 36, 2, 0, 0, 0],
+            [37, 37, 37, 49, 2, 0, 0, 0],
+            [37, 51, 37, 64, 2, 0, 0, 0],
+            [37, 65, 37, 66, 0, 0, 0, 0],
+            [37, 67, 37, 71, 2, 0, 0, 0],
+            [37, 74, 37, 75, 0, 0, 0, 0],
+            [39, 9, 39, 15, 2, 0, 0, 0],
+            [40, 5, 40, 6, 2, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 2,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNvMNtCs4eUZF1Sz7bo_19spiffe_svid_manager22svid_converter_serviceNtB2_20SvidConverterService20convert_x509_context",
+          "regions": [[29, 5, 29, 86, 2, 0, 0, 0]]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 2,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNvXs_NtCs4eUZF1Sz7bo_19spiffe_svid_manager22svid_converter_serviceNtB4_20SvidConverterServiceNtNtCs5hRmXNRfxRS_15service_manager7service7Service3run",
+          "regions": [
+            [45, 82, 45, 83, 2, 0, 0, 0],
+            [68, 5, 68, 6, 2, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 4,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/parse_end_entity_cert.rs"
+          ],
+          "name": "_RNvNtCs4eUZF1Sz7bo_19spiffe_svid_manager21parse_end_entity_cert21parse_end_entity_cert",
+          "regions": [
+            [7, 1, 9, 41, 4, 0, 0, 0],
+            [10, 5, 10, 28, 4, 0, 0, 0],
+            [10, 29, 10, 39, 4, 0, 0, 0],
+            [10, 41, 10, 48, 4, 0, 0, 0],
+            [15, 1, 15, 2, 4, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/parse_end_entity_cert.rs"
+          ],
+          "name": "_RNvNtNtCs7gAVgBjej2k_19spiffe_svid_manager21parse_end_entity_cert5testss_17parses_valid_cert",
+          "regions": [
+            [27, 5, 27, 27, 1, 0, 0, 0],
+            [28, 13, 28, 17, 1, 0, 0, 0],
+            [28, 20, 28, 40, 1, 0, 0, 0],
+            [28, 41, 28, 75, 1, 0, 0, 0],
+            [28, 76, 28, 82, 1, 0, 0, 0],
+            [30, 9, 30, 16, 1, 0, 0, 0],
+            [30, 17, 30, 45, 1, 0, 0, 0],
+            [30, 46, 30, 51, 1, 0, 0, 0],
+            [31, 5, 31, 6, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/parse_end_entity_cert.rs"
+          ],
+          "name": "_RNvNtNtCs7gAVgBjej2k_19spiffe_svid_manager21parse_end_entity_cert5testss_19rejects_invalid_der",
+          "regions": [
+            [34, 5, 34, 29, 1, 0, 0, 0],
+            [35, 13, 35, 17, 1, 0, 0, 0],
+            [35, 20, 35, 40, 1, 0, 0, 0],
+            [35, 41, 35, 45, 1, 0, 0, 0],
+            [37, 13, 37, 18, 1, 0, 0, 0],
+            [37, 21, 37, 42, 1, 0, 0, 0],
+            [37, 43, 37, 48, 1, 0, 0, 0],
+            [37, 50, 37, 53, 1, 0, 0, 0],
+            [37, 56, 37, 62, 1, 0, 0, 0],
+            [39, 9, 39, 19, 1, 0, 0, 0],
+            [43, 5, 43, 6, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 7,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/parse_end_entity_cert.rs"
+          ],
+          "name": "_RNvNtCs7gAVgBjej2k_19spiffe_svid_manager21parse_end_entity_cert21parse_end_entity_cert",
+          "regions": [
+            [7, 1, 9, 41, 7, 0, 0, 0],
+            [10, 5, 10, 28, 7, 0, 0, 0],
+            [10, 29, 10, 39, 7, 0, 0, 0],
+            [10, 41, 10, 48, 7, 0, 0, 0],
+            [15, 1, 15, 2, 7, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 4,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNvNtNtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_service5tests23build_converter_service",
+          "regions": [
+            [92, 5, 94, 30, 4, 0, 0, 0],
+            [95, 14, 95, 30, 4, 0, 0, 0],
+            [95, 32, 95, 47, 4, 0, 0, 0],
+            [95, 51, 95, 72, 4, 0, 0, 0],
+            [97, 9, 101, 10, 4, 0, 0, 0],
+            [98, 13, 98, 25, 4, 0, 0, 0],
+            [102, 5, 102, 6, 4, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNvNtNtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_service5testss_38errors_on_context_without_default_svid",
+          "regions": [
+            [105, 11, 105, 54, 1, 0, 0, 0],
+            [113, 9, 113, 34, 1, 0, 0, 0],
+            [114, 5, 114, 6, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNvNtNtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_service5testss_58convert_x509_context_errors_when_bundle_lacks_trust_domain",
+          "regions": [
+            [117, 11, 117, 74, 1, 0, 0, 0],
+            [129, 9, 129, 34, 1, 0, 0, 0],
+            [130, 5, 130, 6, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNvNtNtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_service5testss_69convert_x509_context_errors_when_ca_bundle_channel_has_no_subscribers",
+          "regions": [
+            [133, 11, 133, 85, 1, 0, 0, 0],
+            [143, 9, 143, 34, 1, 0, 0, 0],
+            [144, 5, 144, 6, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNvNtNtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_service5testss_71convert_x509_context_errors_when_private_key_is_unsupported_for_signing",
+          "regions": [
+            [147, 11, 147, 87, 1, 0, 0, 0],
+            [165, 9, 165, 34, 1, 0, 0, 0],
+            [166, 5, 166, 6, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 0,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNvXs_NtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_serviceNtB4_20SvidConverterServiceNtNtCs5hRmXNRfxRS_15service_manager7service7Service3run",
+          "regions": [
+            [45, 82, 45, 83, 0, 0, 0, 0],
+            [68, 5, 68, 6, 0, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 2,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/parse_end_entity_cert.rs"
+          ],
+          "name": "_RNCNvNtCs7gAVgBjej2k_19spiffe_svid_manager21parse_end_entity_cert21parse_end_entity_cert0B5_",
+          "regions": [
+            [10, 55, 10, 56, 2, 0, 0, 0],
+            [11, 9, 11, 14, 2, 0, 0, 0],
+            [13, 9, 13, 65, 2, 0, 0, 0],
+            [14, 5, 14, 6, 2, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNCNCNvMNtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_serviceNtB6_20SvidConverterService20convert_x509_context00B8_",
+          "regions": [
+            [30, 81, 30, 82, 1, 0, 0, 0],
+            [31, 13, 31, 20, 1, 0, 0, 0],
+            [32, 9, 32, 10, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 4,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNCNvMNtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_serviceNtB4_20SvidConverterService20convert_x509_context0B6_",
+          "regions": [
+            [29, 87, 29, 88, 4, 0, 0, 0],
+            [30, 13, 30, 25, 3, 0, 0, 0],
+            [30, 27, 30, 36, 3, 0, 0, 0],
+            [30, 39, 30, 51, 4, 0, 0, 0],
+            [30, 52, 30, 64, 4, 0, 0, 0],
+            [30, 67, 30, 77, 4, 0, 0, 0],
+            [32, 11, 32, 12, 1, 0, 0, 0],
+            [34, 9, 34, 39, 3, 0, 0, 0],
+            [35, 14, 35, 17, 2, 0, 0, 0],
+            [35, 23, 35, 31, 2, 0, 0, 0],
+            [35, 32, 35, 58, 3, 0, 0, 0],
+            [35, 59, 35, 71, 3, 0, 0, 0],
+            [35, 72, 35, 73, 1, 0, 0, 0],
+            [36, 9, 36, 26, 2, 0, 0, 0],
+            [37, 14, 37, 18, 1, 0, 0, 0],
+            [37, 19, 37, 36, 2, 0, 0, 0],
+            [37, 37, 37, 49, 2, 0, 0, 0],
+            [37, 51, 37, 64, 2, 0, 0, 0],
+            [37, 65, 37, 66, 1, 0, 0, 0],
+            [37, 67, 37, 71, 1, 0, 0, 0],
+            [37, 74, 37, 75, 1, 0, 0, 0],
+            [39, 9, 39, 15, 0, 0, 0, 0],
+            [40, 5, 40, 6, 4, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNCNvNtNtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_service5testss_38errors_on_context_without_default_svid0B7_",
+          "regions": [
+            [105, 55, 105, 56, 1, 0, 0, 0],
+            [106, 14, 106, 26, 1, 0, 0, 0],
+            [106, 28, 106, 41, 1, 0, 0, 0],
+            [106, 45, 106, 66, 1, 0, 0, 0],
+            [107, 13, 107, 20, 1, 0, 0, 0],
+            [107, 23, 107, 46, 1, 0, 0, 0],
+            [107, 47, 107, 59, 1, 0, 0, 0],
+            [109, 13, 109, 19, 1, 0, 0, 0],
+            [109, 22, 109, 29, 1, 0, 0, 0],
+            [109, 22, 111, 19, 1, 0, 0, 0],
+            [110, 14, 110, 34, 1, 0, 0, 0],
+            [110, 35, 110, 51, 1, 0, 0, 0],
+            [110, 52, 110, 56, 1, 0, 0, 0],
+            [113, 9, 113, 16, 1, 0, 0, 0],
+            [113, 17, 113, 23, 1, 0, 0, 0],
+            [113, 24, 113, 30, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNCNvNtNtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_service5testss_58convert_x509_context_errors_when_bundle_lacks_trust_domain0B7_",
+          "regions": [
+            [117, 75, 117, 76, 1, 0, 0, 0],
+            [118, 14, 118, 26, 1, 0, 0, 0],
+            [118, 28, 118, 41, 1, 0, 0, 0],
+            [118, 45, 118, 66, 1, 0, 0, 0],
+            [119, 13, 119, 20, 1, 0, 0, 0],
+            [119, 23, 119, 46, 1, 0, 0, 0],
+            [119, 47, 119, 59, 1, 0, 0, 0],
+            [121, 13, 121, 27, 1, 0, 0, 0],
+            [121, 30, 121, 76, 1, 0, 0, 0],
+            [121, 77, 121, 83, 1, 0, 0, 0],
+            [122, 13, 122, 17, 1, 0, 0, 0],
+            [123, 13, 123, 37, 1, 0, 0, 0],
+            [123, 38, 123, 53, 1, 0, 0, 0],
+            [123, 55, 123, 95, 1, 0, 0, 0],
+            [124, 18, 124, 24, 1, 0, 0, 0],
+            [125, 13, 125, 20, 1, 0, 0, 0],
+            [125, 23, 125, 39, 1, 0, 0, 0],
+            [125, 40, 125, 44, 1, 0, 0, 0],
+            [125, 45, 125, 49, 1, 0, 0, 0],
+            [125, 52, 125, 70, 1, 0, 0, 0],
+            [127, 13, 127, 19, 1, 0, 0, 0],
+            [127, 22, 127, 29, 1, 0, 0, 0],
+            [127, 22, 127, 65, 1, 0, 0, 0],
+            [127, 30, 127, 50, 1, 0, 0, 0],
+            [129, 9, 129, 16, 1, 0, 0, 0],
+            [129, 17, 129, 23, 1, 0, 0, 0],
+            [129, 24, 129, 30, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNCNvNtNtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_service5testss_69convert_x509_context_errors_when_ca_bundle_channel_has_no_subscribers0B7_",
+          "regions": [
+            [133, 86, 133, 87, 1, 0, 0, 0],
+            [134, 14, 134, 26, 1, 0, 0, 0],
+            [134, 28, 134, 40, 1, 0, 0, 0],
+            [134, 44, 134, 65, 1, 0, 0, 0],
+            [136, 9, 136, 13, 1, 0, 0, 0],
+            [136, 14, 136, 26, 1, 0, 0, 0],
+            [138, 13, 138, 20, 1, 0, 0, 0],
+            [138, 23, 138, 46, 1, 0, 0, 0],
+            [138, 47, 138, 59, 1, 0, 0, 0],
+            [139, 13, 139, 20, 1, 0, 0, 0],
+            [139, 23, 139, 50, 1, 0, 0, 0],
+            [139, 53, 139, 59, 1, 0, 0, 0],
+            [141, 13, 141, 19, 1, 0, 0, 0],
+            [141, 22, 141, 29, 1, 0, 0, 0],
+            [141, 22, 141, 65, 1, 0, 0, 0],
+            [141, 30, 141, 50, 1, 0, 0, 0],
+            [143, 9, 143, 16, 1, 0, 0, 0],
+            [143, 17, 143, 23, 1, 0, 0, 0],
+            [143, 24, 143, 30, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNCNvNtNtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_service5testss_71convert_x509_context_errors_when_private_key_is_unsupported_for_signing0B7_",
+          "regions": [
+            [147, 88, 147, 89, 1, 0, 0, 0],
+            [148, 14, 148, 26, 1, 0, 0, 0],
+            [148, 28, 148, 41, 1, 0, 0, 0],
+            [148, 45, 148, 66, 1, 0, 0, 0],
+            [149, 13, 149, 20, 1, 0, 0, 0],
+            [149, 23, 149, 46, 1, 0, 0, 0],
+            [149, 47, 149, 59, 1, 0, 0, 0],
+            [151, 13, 151, 27, 1, 0, 0, 0],
+            [151, 30, 151, 76, 1, 0, 0, 0],
+            [151, 77, 151, 83, 1, 0, 0, 0],
+            [152, 13, 152, 17, 1, 0, 0, 0],
+            [153, 13, 153, 37, 1, 0, 0, 0],
+            [153, 38, 153, 53, 1, 0, 0, 0],
+            [153, 55, 153, 94, 1, 0, 0, 0],
+            [154, 18, 154, 24, 1, 0, 0, 0],
+            [155, 13, 155, 25, 1, 0, 0, 0],
+            [155, 28, 155, 44, 1, 0, 0, 0],
+            [155, 45, 155, 58, 1, 0, 0, 0],
+            [155, 60, 155, 66, 1, 0, 0, 0],
+            [156, 13, 156, 19, 1, 0, 0, 0],
+            [156, 22, 156, 55, 1, 0, 0, 0],
+            [156, 56, 156, 68, 1, 0, 0, 0],
+            [156, 70, 156, 79, 1, 0, 0, 0],
+            [156, 81, 156, 87, 1, 0, 0, 0],
+            [157, 13, 157, 27, 1, 0, 0, 0],
+            [157, 30, 157, 48, 1, 0, 0, 0],
+            [159, 9, 159, 19, 1, 0, 0, 0],
+            [159, 20, 159, 30, 1, 0, 0, 0],
+            [159, 31, 159, 37, 1, 0, 0, 0],
+            [161, 13, 161, 20, 1, 0, 0, 0],
+            [161, 23, 161, 39, 1, 0, 0, 0],
+            [161, 40, 161, 44, 1, 0, 0, 0],
+            [161, 45, 161, 49, 1, 0, 0, 0],
+            [161, 52, 161, 62, 1, 0, 0, 0],
+            [163, 13, 163, 19, 1, 0, 0, 0],
+            [163, 22, 163, 29, 1, 0, 0, 0],
+            [163, 22, 163, 65, 1, 0, 0, 0],
+            [163, 30, 163, 50, 1, 0, 0, 0],
+            [165, 9, 165, 16, 1, 0, 0, 0],
+            [165, 17, 165, 23, 1, 0, 0, 0],
+            [165, 24, 165, 30, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 4,
+          "filenames": [
+            "/workspace/spiffe_svid_manager/src/svid_converter_service.rs"
+          ],
+          "name": "_RNvMNtCs7gAVgBjej2k_19spiffe_svid_manager22svid_converter_serviceNtB2_20SvidConverterService20convert_x509_context",
+          "regions": [[29, 5, 29, 86, 4, 0, 0, 0]]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager_tests/src/pick_free_tcp_port.rs"
+          ],
+          "name": "_RNvNtNtCs40ksG1jjYHh_25spiffe_svid_manager_tests18pick_free_tcp_port5testss_31returns_a_free_port_on_loopback",
+          "regions": [
+            [24, 5, 24, 41, 1, 0, 0, 0],
+            [25, 13, 25, 17, 1, 0, 0, 0],
+            [25, 20, 25, 38, 1, 0, 0, 0],
+            [25, 41, 25, 47, 1, 0, 0, 0],
+            [27, 9, 27, 16, 1, 0, 0, 0],
+            [27, 17, 27, 25, 1, 0, 0, 0],
+            [28, 5, 28, 6, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager_tests/src/pick_free_tcp_port.rs"
+          ],
+          "name": "_RNvNtNtCs40ksG1jjYHh_25spiffe_svid_manager_tests18pick_free_tcp_port5testss_35errors_when_bind_address_is_invalid",
+          "regions": [
+            [31, 5, 31, 45, 1, 0, 0, 0],
+            [32, 13, 32, 19, 1, 0, 0, 0],
+            [32, 22, 32, 44, 1, 0, 0, 0],
+            [32, 45, 32, 64, 1, 0, 0, 0],
+            [34, 9, 34, 16, 1, 0, 0, 0],
+            [34, 17, 34, 23, 1, 0, 0, 0],
+            [34, 24, 34, 30, 1, 0, 0, 0],
+            [35, 5, 35, 6, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 1,
+          "filenames": [
+            "/workspace/spiffe_svid_manager_tests/src/pick_free_tcp_port.rs"
+          ],
+          "name": "_RNvNtCs40ksG1jjYHh_25spiffe_svid_manager_tests18pick_free_tcp_port18pick_free_tcp_port",
+          "regions": [
+            [14, 1, 14, 43, 1, 0, 0, 0],
+            [15, 5, 15, 27, 1, 0, 0, 0],
+            [15, 28, 15, 41, 1, 0, 0, 0],
+            [16, 1, 16, 2, 1, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 2,
+          "filenames": [
+            "/workspace/spiffe_svid_manager_tests/src/pick_free_tcp_port.rs"
+          ],
+          "name": "_RNvNtCs40ksG1jjYHh_25spiffe_svid_manager_tests18pick_free_tcp_port22pick_free_tcp_port_for",
+          "regions": [
+            [5, 1, 5, 62, 2, 0, 0, 0],
+            [6, 9, 6, 17, 1, 0, 0, 0],
+            [6, 20, 6, 37, 2, 0, 0, 0],
+            [6, 38, 6, 47, 2, 0, 0, 0],
+            [6, 48, 6, 49, 1, 0, 0, 0],
+            [7, 9, 7, 13, 1, 0, 0, 0],
+            [7, 16, 7, 24, 1, 0, 0, 0],
+            [7, 25, 7, 35, 1, 0, 0, 0],
+            [7, 37, 7, 38, 0, 0, 0, 0],
+            [7, 39, 7, 43, 1, 0, 0, 0],
+            [9, 5, 9, 9, 1, 0, 0, 0],
+            [9, 10, 9, 18, 1, 0, 0, 0],
+            [11, 5, 11, 13, 1, 0, 0, 0],
+            [12, 1, 12, 2, 2, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 15,
+          "filenames": [
+            "/workspace/spiffe_svid_manager_tests/src/pick_free_tcp_port.rs"
+          ],
+          "name": "_RNvNtCs8KDn4Htlvht_25spiffe_svid_manager_tests18pick_free_tcp_port18pick_free_tcp_port",
+          "regions": [
+            [14, 1, 14, 43, 15, 0, 0, 0],
+            [15, 5, 15, 27, 15, 0, 0, 0],
+            [15, 28, 15, 41, 15, 0, 0, 0],
+            [16, 1, 16, 2, 15, 0, 0, 0]
+          ]
+        },
+        {
+          "branches": [],
+          "mcdc_records": [],
+          "count": 15,
+          "filenames": [
+            "/workspace/spiffe_svid_manager_tests/src/pick_free_tcp_port.rs"
+          ],
+          "name": "_RNvNtCs8KDn4Htlvht_25spiffe_svid_manager_tests18pick_free_tcp_port22pick_free_tcp_port_for",
+          "regions": [
+            [5, 1, 5, 62, 15, 0, 0, 0],
+            [6, 9, 6, 17, 15, 0, 0, 0],
+            [6, 20, 6, 37, 15, 0, 0, 0],
+            [6, 38, 6, 47, 15, 0, 0, 0],
+            [6, 48, 6, 49, 0, 0, 0, 0],
+            [7, 9, 7, 13, 15, 0, 0, 0],
+            [7, 16, 7, 24, 15, 0, 0, 0],
+            [7, 25, 7, 35, 15, 0, 0, 0],
+            [7, 37, 7, 38, 0, 0, 0, 0],
+            [7, 39, 7, 43, 15, 0, 0, 0],
+            [9, 5, 9, 9, 15, 0, 0, 0],
+            [9, 10, 9, 18, 15, 0, 0, 0],
+            [11, 5, 11, 13, 15, 0, 0, 0],
+            [12, 1, 12, 2, 15, 0, 0, 0]
+          ]
+        }
+      ],
+      "totals": {
+        "branches": {
+          "count": 0,
+          "covered": 0,
+          "notcovered": 0,
+          "percent": 0
+        },
+        "functions": {
+          "count": 249,
+          "covered": 247,
+          "percent": 99.19678714859438
+        },
+        "instantiations": {
+          "count": 416,
+          "covered": 346,
+          "percent": 83.17307692307693
+        },
+        "lines": {
+          "count": 1624,
+          "covered": 1614,
+          "percent": 99.38423645320196
+        },
+        "mcdc": {
+          "count": 0,
+          "covered": 0,
+          "notcovered": 0,
+          "percent": 0
+        },
+        "regions": {
+          "count": 2289,
+          "covered": 2263,
+          "notcovered": 26,
+          "percent": 98.86413280908694
+        }
+      }
+    }
+  ],
+  "type": "llvm.coverage.json.export",
+  "version": "3.0.1",
+  "cargo_llvm_cov": {
+    "version": "0.8.5",
+    "manifest_path": "/home/mcharytoniuk/workspace/intentee/intentee/Cargo.toml"
+  }
+}
