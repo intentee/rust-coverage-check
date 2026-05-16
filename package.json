@@ -1,6 +1,6 @@
 {
   "name": "@intentee/rust-coverage-check",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Gate cargo-llvm-cov coverage by crate.",
   "type": "module",
   "engines": {
