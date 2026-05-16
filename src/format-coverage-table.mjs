@@ -1,10 +1,26 @@
 import { percent } from "./percent.mjs";
 
 const HEADER_SEPARATOR = "-".repeat(96);
+const REQUIRED_COLUMN_WIDTH = "required".length;
+
+/**
+ * @param {Map<string, number>} gatedCrates
+ * @param {string} crateName
+ * @returns {string}
+ */
+function requiredLabel(gatedCrates, crateName) {
+  const threshold = gatedCrates.get(crateName);
+
+  if (threshold === undefined) {
+    return "-";
+  }
+
+  return `${threshold.toFixed(2)}%`;
+}
 
 /**
  * @param {Map<string, import("./parse-llvm-cov-json.mjs").CrateStats>} crateStats
- * @param {Set<string>} gatedCrates
+ * @param {Map<string, number>} gatedCrates
  * @returns {string}
  */
 export function formatCoverageTable(crateStats, gatedCrates) {
@@ -13,7 +29,7 @@ export function formatCoverageTable(crateStats, gatedCrates) {
   );
 
   const lines = [
-    `${"crate".padEnd(48)} ${"lines".padStart(10)} ${"functions".padStart(10)} ${"regions".padStart(10)}  gated`,
+    `${"crate".padEnd(48)} ${"lines".padStart(10)} ${"functions".padStart(10)} ${"regions".padStart(10)}  ${"required".padStart(REQUIRED_COLUMN_WIDTH)}`,
     HEADER_SEPARATOR,
   ];
 
@@ -21,10 +37,10 @@ export function formatCoverageTable(crateStats, gatedCrates) {
     const linesPercent = percent(stats.lines);
     const functionsPercent = percent(stats.functions);
     const regionsPercent = percent(stats.regions);
-    const isGated = gatedCrates.has(crateName);
+    const required = requiredLabel(gatedCrates, crateName);
 
     lines.push(
-      `${crateName.padEnd(48)} ${linesPercent.toFixed(2).padStart(9)}% ${functionsPercent.toFixed(2).padStart(9)}% ${regionsPercent.toFixed(2).padStart(9)}%  ${isGated ? "YES" : "no"}`,
+      `${crateName.padEnd(48)} ${linesPercent.toFixed(2).padStart(9)}% ${functionsPercent.toFixed(2).padStart(9)}% ${regionsPercent.toFixed(2).padStart(9)}%  ${required.padStart(REQUIRED_COLUMN_WIDTH)}`,
     );
   }
 

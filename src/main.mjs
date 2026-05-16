@@ -5,7 +5,7 @@ import { formatCoverageTable } from "./format-coverage-table.mjs";
 import { parseCliArgs } from "./parse-cli-args.mjs";
 import { parseLlvmCovJson } from "./parse-llvm-cov-json.mjs";
 
-const { jsonPath, workspaceRoot, gatedCrates, requiredPercent } = parseCliArgs(
+const { jsonPath, workspaceRoot, gatedCrates } = parseCliArgs(
   process.argv.slice(2),
 );
 
@@ -17,22 +17,20 @@ if (gatedCrates.size === 0) {
   process.exit(0);
 }
 
-const failures = findFailedGatedCrates(
-  crateStats,
-  gatedCrates,
-  requiredPercent,
-);
+const failures = findFailedGatedCrates(crateStats, gatedCrates);
 
 if (failures.length > 0) {
   console.error("");
-  console.error(`Coverage below ${requiredPercent}% on gated crates:`);
+  console.error("Coverage below required threshold on gated crates:");
 
   for (const failure of failures) {
     if (failure.missing) {
-      console.error(`  ${failure.crateName}: missing from coverage report`);
+      console.error(
+        `  ${failure.crateName}: missing from coverage report (required ${failure.requiredPercent}%)`,
+      );
     } else {
       console.error(
-        `  ${failure.crateName}: lines ${failure.linesPercent.toFixed(2)}% functions ${failure.functionsPercent.toFixed(2)}% regions ${failure.regionsPercent.toFixed(2)}%`,
+        `  ${failure.crateName}: required ${failure.requiredPercent}%, got lines ${failure.linesPercent.toFixed(2)}% functions ${failure.functionsPercent.toFixed(2)}% regions ${failure.regionsPercent.toFixed(2)}%`,
       );
     }
   }
@@ -41,4 +39,4 @@ if (failures.length > 0) {
 }
 
 console.log("");
-console.log(`All gated crates at ${requiredPercent}% coverage.`);
+console.log("All gated crates meet their required coverage.");

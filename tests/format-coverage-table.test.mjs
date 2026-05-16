@@ -11,15 +11,15 @@ function statsWith(linesCovered, linesCount) {
   };
 }
 
-test("renders a header row and a separator row", () => {
-  const output = formatCoverageTable(new Map(), new Set());
+test("renders a header row that includes the required threshold column", () => {
+  const output = formatCoverageTable(new Map(), new Map());
 
   const [header, separator] = output.split("\n");
   assert.ok(header.includes("crate"));
   assert.ok(header.includes("lines"));
   assert.ok(header.includes("functions"));
   assert.ok(header.includes("regions"));
-  assert.ok(header.includes("gated"));
+  assert.ok(header.includes("required"));
   assert.ok(separator.length > 0);
   assert.ok(separator.split("").every((character) => character === "-"));
 });
@@ -30,7 +30,7 @@ test("sorts crates alphabetically", () => {
     ["alpha", statsWith(10, 10)],
   ]);
 
-  const output = formatCoverageTable(stats, new Set());
+  const output = formatCoverageTable(stats, new Map());
   const alphaIndex = output.indexOf("alpha");
   const zetaIndex = output.indexOf("zeta");
 
@@ -38,12 +38,12 @@ test("sorts crates alphabetically", () => {
   assert.ok(alphaIndex < zetaIndex);
 });
 
-test("marks gated crates with YES and non-gated with no", () => {
+test("shows the per-crate threshold for gated crates and - for non-gated", () => {
   const stats = new Map([
     ["gated_one", statsWith(10, 10)],
     ["not_gated", statsWith(10, 10)],
   ]);
-  const gated = new Set(["gated_one"]);
+  const gated = new Map([["gated_one", 99]]);
 
   const output = formatCoverageTable(stats, gated);
   const gatedLine = output
@@ -53,14 +53,14 @@ test("marks gated crates with YES and non-gated with no", () => {
     .split("\n")
     .find((line) => line.includes("not_gated"));
 
-  assert.ok(gatedLine.trimEnd().endsWith("YES"));
-  assert.ok(notGatedLine.trimEnd().endsWith("no"));
+  assert.ok(gatedLine.trimEnd().endsWith("99.00%"));
+  assert.ok(notGatedLine.trimEnd().endsWith("-"));
 });
 
-test("formats percentages with two decimal places", () => {
+test("formats body percentages with two decimal places", () => {
   const stats = new Map([["alpha", statsWith(2, 3)]]);
 
-  const output = formatCoverageTable(stats, new Set());
+  const output = formatCoverageTable(stats, new Map());
 
   assert.ok(output.includes("66.67%"));
 });

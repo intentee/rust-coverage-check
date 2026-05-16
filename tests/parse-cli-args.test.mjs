@@ -14,29 +14,35 @@ test("parses a json path and workspace root with no gated crates", () => {
   assert.equal(result.jsonPath, "target/llvm-cov.json");
   assert.equal(result.workspaceRoot, "/repo");
   assert.equal(result.gatedCrates.size, 0);
-  assert.equal(result.requiredPercent, 0);
 });
 
-test("accumulates repeated --gated flags into a set", () => {
+test("accumulates repeated --gated flags into a map of per-crate thresholds", () => {
   const result = parseCliArgs([
     "out.json",
     "--workspace-root",
     "/repo",
     "--gated",
-    "alpha",
+    "alpha=99",
     "--gated",
-    "beta",
-    "--required-percent",
-    "99",
+    "beta=80",
   ]);
 
-  assert.deepEqual([...result.gatedCrates].sort(), ["alpha", "beta"]);
-  assert.equal(result.requiredPercent, 99);
+  assert.equal(result.gatedCrates.get("alpha"), 99);
+  assert.equal(result.gatedCrates.get("beta"), 80);
+  assert.equal(result.gatedCrates.size, 2);
 });
 
 test("throws when no positional argument is given", () => {
   assert.throws(
     () => parseCliArgs(["--workspace-root", "/repo"]),
+    (caught) => caught instanceof CliArgsError && caught.code === "usage",
+  );
+});
+
+test("throws when more than one positional argument is supplied", () => {
+  assert.throws(
+    () =>
+      parseCliArgs(["first.json", "second.json", "--workspace-root", "/repo"]),
     (caught) => caught instanceof CliArgsError && caught.code === "usage",
   );
 });
@@ -50,7 +56,7 @@ test("throws when --workspace-root is missing", () => {
   );
 });
 
-test("throws when --gated is used without --required-percent", () => {
+test("throws when a --gated entry has no =threshold", () => {
   assert.throws(
     () =>
       parseCliArgs([
@@ -62,11 +68,21 @@ test("throws when --gated is used without --required-percent", () => {
       ]),
     (caught) =>
       caught instanceof CliArgsError &&
-      caught.code === "required_percent_required",
+      caught.code === "gated_missing_threshold",
   );
 });
 
-test("throws when --required-percent is not a number", () => {
+test("throws when a --gated entry has an empty crate name", () => {
+  assert.throws(
+    () =>
+      parseCliArgs(["out.json", "--workspace-root", "/repo", "--gated", "=99"]),
+    (caught) =>
+      caught instanceof CliArgsError &&
+      caught.code === "gated_crate_name_required",
+  );
+});
+
+test("throws when a --gated threshold is empty", () => {
   assert.throws(
     () =>
       parseCliArgs([
@@ -74,17 +90,15 @@ test("throws when --required-percent is not a number", () => {
         "--workspace-root",
         "/repo",
         "--gated",
-        "alpha",
-        "--required-percent",
-        "abc",
+        "alpha=",
       ]),
     (caught) =>
       caught instanceof CliArgsError &&
-      caught.code === "required_percent_not_number",
+      caught.code === "gated_threshold_not_number",
   );
 });
 
-test("throws when --required-percent is outside 0..100", () => {
+test("throws when a --gated threshold is not a number", () => {
   assert.throws(
     () =>
       parseCliArgs([
@@ -92,20 +106,43 @@ test("throws when --required-percent is outside 0..100", () => {
         "--workspace-root",
         "/repo",
         "--gated",
-        "alpha",
-        "--required-percent",
-        "150",
+        "alpha=abc",
       ]),
     (caught) =>
       caught instanceof CliArgsError &&
-      caught.code === "required_percent_out_of_range",
+      caught.code === "gated_threshold_not_number",
   );
 });
 
-test("throws when more than one positional argument is supplied", () => {
+test("throws when a --gated threshold is outside 0..100", () => {
   assert.throws(
     () =>
-      parseCliArgs(["first.json", "second.json", "--workspace-root", "/repo"]),
-    (caught) => caught instanceof CliArgsError && caught.code === "usage",
+      parseCliArgs([
+        "out.json",
+        "--workspace-root",
+        "/repo",
+        "--gated",
+        "alpha=150",
+      ]),
+    (caught) =>
+      caught instanceof CliArgsError &&
+      caught.code === "gated_threshold_out_of_range",
+  );
+});
+
+test("throws when the same gated crate is supplied twice", () => {
+  assert.throws(
+    () =>
+      parseCliArgs([
+        "out.json",
+        "--workspace-root",
+        "/repo",
+        "--gated",
+        "alpha=99",
+        "--gated",
+        "alpha=80",
+      ]),
+    (caught) =>
+      caught instanceof CliArgsError && caught.code === "gated_crate_duplicate",
   );
 });

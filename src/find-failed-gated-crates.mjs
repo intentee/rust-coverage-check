@@ -3,6 +3,7 @@ import { percent } from "./percent.mjs";
 /**
  * @typedef {object} GateFailure
  * @property {string} crateName
+ * @property {number} requiredPercent
  * @property {number} linesPercent
  * @property {number} functionsPercent
  * @property {number} regionsPercent
@@ -11,20 +12,25 @@ import { percent } from "./percent.mjs";
 
 /**
  * @param {Map<string, import("./parse-llvm-cov-json.mjs").CrateStats>} crateStats
- * @param {Set<string>} gatedCrates
- * @param {number} requiredPercent
+ * @param {Map<string, number>} gatedCrates
  * @returns {GateFailure[]}
  */
-export function findFailedGatedCrates(
-  crateStats,
-  gatedCrates,
-  requiredPercent,
-) {
+export function findFailedGatedCrates(crateStats, gatedCrates) {
   /** @type {GateFailure[]} */
   const failures = [];
 
-  for (const [crateName, stats] of crateStats) {
-    if (!gatedCrates.has(crateName)) {
+  for (const [crateName, requiredPercent] of gatedCrates) {
+    const stats = crateStats.get(crateName);
+
+    if (stats === undefined) {
+      failures.push({
+        crateName,
+        requiredPercent,
+        linesPercent: 0,
+        functionsPercent: 0,
+        regionsPercent: 0,
+        missing: true,
+      });
       continue;
     }
 
@@ -39,22 +45,11 @@ export function findFailedGatedCrates(
     ) {
       failures.push({
         crateName,
+        requiredPercent,
         linesPercent,
         functionsPercent,
         regionsPercent,
         missing: false,
-      });
-    }
-  }
-
-  for (const expectedCrateName of gatedCrates) {
-    if (!crateStats.has(expectedCrateName)) {
-      failures.push({
-        crateName: expectedCrateName,
-        linesPercent: 0,
-        functionsPercent: 0,
-        regionsPercent: 0,
-        missing: true,
       });
     }
   }

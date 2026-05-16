@@ -6,39 +6,88 @@ import { CliArgsError } from "./cli-args-error.mjs";
  * @typedef {object} CliArgs
  * @property {string} jsonPath
  * @property {string} workspaceRoot
- * @property {Set<string>} gatedCrates
+ * @property {Map<string, number>} gatedCrates
+ */
+
+/**
+ * @typedef {object} GatedEntry
+ * @property {string} crateName
  * @property {number} requiredPercent
  */
 
 /**
- * @param {unknown} value
- * @returns {number}
+ * @param {string} value
+ * @returns {GatedEntry}
  */
-function parseRequiredPercent(value) {
-  if (typeof value !== "string") {
+function parseGatedEntry(value) {
+  const equalsIndex = value.indexOf("=");
+
+  if (equalsIndex === -1) {
     throw new CliArgsError(
-      "required_percent_required",
-      "--required-percent is required when --gated is supplied",
+      "gated_missing_threshold",
+      `--gated must be <crate>=<percent>, got ${value}`,
     );
   }
 
-  const parsed = Number(value);
+  const crateName = value.slice(0, equalsIndex);
 
-  if (!Number.isFinite(parsed)) {
+  if (crateName.length === 0) {
     throw new CliArgsError(
-      "required_percent_not_number",
-      `--required-percent must be a number, got ${value}`,
+      "gated_crate_name_required",
+      `--gated crate name is empty in ${value}`,
     );
   }
 
-  if (parsed < 0 || parsed > 100) {
+  const thresholdSource = value.slice(equalsIndex + 1);
+
+  if (thresholdSource.length === 0) {
     throw new CliArgsError(
-      "required_percent_out_of_range",
-      `--required-percent must be between 0 and 100, got ${parsed}`,
+      "gated_threshold_not_number",
+      `--gated threshold is empty for crate ${crateName}`,
     );
   }
 
-  return parsed;
+  const requiredPercent = Number(thresholdSource);
+
+  if (!Number.isFinite(requiredPercent)) {
+    throw new CliArgsError(
+      "gated_threshold_not_number",
+      `--gated threshold for ${crateName} must be a number, got ${thresholdSource}`,
+    );
+  }
+
+  if (requiredPercent < 0 || requiredPercent > 100) {
+    throw new CliArgsError(
+      "gated_threshold_out_of_range",
+      `--gated threshold for ${crateName} must be between 0 and 100, got ${requiredPercent}`,
+    );
+  }
+
+  return { crateName, requiredPercent };
+}
+
+/**
+ * @param {string[]} gatedValues
+ * @returns {Map<string, number>}
+ */
+function buildGatedCrates(gatedValues) {
+  /** @type {Map<string, number>} */
+  const gatedCrates = new Map();
+
+  for (const value of gatedValues) {
+    const { crateName, requiredPercent } = parseGatedEntry(value);
+
+    if (gatedCrates.has(crateName)) {
+      throw new CliArgsError(
+        "gated_crate_duplicate",
+        `--gated ${crateName} was supplied more than once`,
+      );
+    }
+
+    gatedCrates.set(crateName, requiredPercent);
+  }
+
+  return gatedCrates;
 }
 
 /**
@@ -51,7 +100,6 @@ export function parseCliArgs(argv) {
     options: {
       "workspace-root": { type: "string" },
       gated: { type: "string", multiple: true },
-      "required-percent": { type: "string" },
     },
     allowPositionals: true,
     strict: true,
@@ -60,7 +108,7 @@ export function parseCliArgs(argv) {
   if (positionals.length !== 1) {
     throw new CliArgsError(
       "usage",
-      "usage: rust-coverage-check <llvm-cov-json-path> --workspace-root <path> [--gated <crate>]... [--required-percent <number>]",
+      "usage: rust-coverage-check <llvm-cov-json-path> --workspace-root <path> [--gated <crate>=<percent>]...",
     );
   }
 
@@ -74,13 +122,7 @@ export function parseCliArgs(argv) {
     );
   }
 
-  const gatedList = values.gated ?? [];
-  const gatedCrates = new Set(gatedList);
+  const gatedCrates = buildGatedCrates(values.gated ?? []);
 
-  const requiredPercent =
-    gatedCrates.size === 0
-      ? 0
-      : parseRequiredPercent(values["required-percent"]);
-
-  return { jsonPath, workspaceRoot, gatedCrates, requiredPercent };
+  return { jsonPath, workspaceRoot, gatedCrates };
 }
