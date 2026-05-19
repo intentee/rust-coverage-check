@@ -1,4 +1,4 @@
-import { relative, sep } from "node:path";
+import { win32 } from "node:path";
 
 /**
  * @param {string} filename
@@ -6,11 +6,12 @@ import { relative, sep } from "node:path";
  * @returns {string | null}
  */
 export function workspaceRelativeCrate(filename, workspaceRoot) {
-  if (!filename.startsWith(workspaceRoot + sep)) {
+  const resolvedFilename = win32.resolve(filename);
+  const resolvedRoot = win32.resolve(workspaceRoot);
+
+  if (!resolvedFilename.startsWith(resolvedRoot + win32.sep)) {
     return null;
   }
 
-  const relativePath = relative(workspaceRoot, filename);
-
-  return relativePath.split(sep)[0];
+  return win32.relative(resolvedRoot, resolvedFilename).split(win32.sep)[0];
 }

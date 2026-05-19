@@ -33,3 +33,13 @@ test("returns the crate name even when the file is deeply nested", () => {
 test("returns null when filename equals the workspace root (no separator)", () => {
   assert.equal(workspaceRelativeCrate("/workspace", "/workspace"), null);
 });
+
+test("returns the crate for a Windows-style backslash path with trailing separator", () => {
+  assert.equal(
+    workspaceRelativeCrate(
+      "C:\\workspace\\my_crate\\src\\file.rs",
+      "C:\\workspace\\",
+    ),
+    "my_crate",
+  );
+});

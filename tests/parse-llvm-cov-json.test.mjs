@@ -11,6 +11,12 @@ const FIXTURE_PATH = resolve(
   "sample-llvm-cov.json",
 );
 
+const WINDOWS_FIXTURE_PATH = resolve(
+  dirname(fileURLToPath(import.meta.url)),
+  "fixtures",
+  "windows-llvm-cov.json",
+);
+
 const WORKSPACE_ROOT = "/workspace";
 
 test("groups files by their first path component", () => {
@@ -45,4 +51,11 @@ test("skips files outside the supplied workspace root", () => {
   const crateStats = parseLlvmCovJson(FIXTURE_PATH, "/different-root");
 
   assert.equal(crateStats.size, 0);
+});
+
+test("groups files by crate for a Windows-style llvm-cov report", () => {
+  const crateStats = parseLlvmCovJson(WINDOWS_FIXTURE_PATH, "C:\\workspace");
+
+  assert.ok(crateStats.has("spiffe_svid_manager"));
+  assert.ok(crateStats.has("spiffe_svid_manager_tests"));
 });
