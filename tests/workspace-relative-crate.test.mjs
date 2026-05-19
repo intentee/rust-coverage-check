@@ -67,3 +67,9 @@ test("matches a UNC-style Windows workspace root", () => {
     "my_crate",
   );
 });
+
+test("throws when workspaceRoot is a relative path", () => {
+  assert.throws(() =>
+    workspaceRelativeCrate("/workspace/foo/bar.rs", "workspace"),
+  );
+});

@@ -14,6 +14,12 @@ function pathModuleFor(workspaceRoot) {
  * @returns {string | null}
  */
 export function workspaceRelativeCrate(filename, workspaceRoot) {
+  if (!posix.isAbsolute(workspaceRoot) && !win32.isAbsolute(workspaceRoot)) {
+    throw new Error(
+      `workspaceRoot must be an absolute path, got ${workspaceRoot}`,
+    );
+  }
+
   const pathModule = pathModuleFor(workspaceRoot);
   const relativePath = pathModule.relative(workspaceRoot, filename);
 
