@@ -57,3 +57,13 @@ test("treats POSIX paths case-sensitively", () => {
     null,
   );
 });
+
+test("matches a UNC-style Windows workspace root", () => {
+  assert.equal(
+    workspaceRelativeCrate(
+      "\\\\server\\share\\repo\\my_crate\\src\\file.rs",
+      "\\\\server\\share\\repo",
+    ),
+    "my_crate",
+  );
+});

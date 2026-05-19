@@ -5,10 +5,7 @@ import { posix, win32 } from "node:path";
  * @returns {typeof posix | typeof win32}
  */
 function pathModuleFor(workspaceRoot) {
-  if (workspaceRoot[1] === ":") {
-    return win32;
-  }
-  return posix;
+  return posix.isAbsolute(workspaceRoot) ? posix : win32;
 }
 
 /**
