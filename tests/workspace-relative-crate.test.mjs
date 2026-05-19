@@ -73,3 +73,10 @@ test("throws when workspaceRoot is a relative path", () => {
     workspaceRelativeCrate("/workspace/foo/bar.rs", "workspace"),
   );
 });
+
+test("returns null when filename is a relative path", () => {
+  assert.equal(
+    workspaceRelativeCrate("crate/src/lib.rs", process.cwd()),
+    null,
+  );
+});

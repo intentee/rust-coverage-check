@@ -21,6 +21,11 @@ export function workspaceRelativeCrate(filename, workspaceRoot) {
   }
 
   const pathModule = pathModuleFor(workspaceRoot);
+
+  if (!pathModule.isAbsolute(filename)) {
+    return null;
+  }
+
   const relativePath = pathModule.relative(workspaceRoot, filename);
 
   if (pathModule.isAbsolute(relativePath)) {
