@@ -1,4 +1,15 @@
-import { win32 } from "node:path";
+import { posix, win32 } from "node:path";
+
+/**
+ * @param {string} workspaceRoot
+ * @returns {typeof posix | typeof win32}
+ */
+function pathModuleFor(workspaceRoot) {
+  if (workspaceRoot[1] === ":") {
+    return win32;
+  }
+  return posix;
+}
 
 /**
  * @param {string} filename
@@ -6,12 +17,18 @@ import { win32 } from "node:path";
  * @returns {string | null}
  */
 export function workspaceRelativeCrate(filename, workspaceRoot) {
-  const resolvedFilename = win32.resolve(filename);
-  const resolvedRoot = win32.resolve(workspaceRoot);
+  const pathModule = pathModuleFor(workspaceRoot);
+  const relativePath = pathModule.relative(workspaceRoot, filename);
 
-  if (!resolvedFilename.startsWith(resolvedRoot + win32.sep)) {
+  if (pathModule.isAbsolute(relativePath)) {
     return null;
   }
 
-  return win32.relative(resolvedRoot, resolvedFilename).split(win32.sep)[0];
+  const [firstSegment] = relativePath.split(pathModule.sep);
+
+  if (firstSegment === "" || firstSegment === "..") {
+    return null;
+  }
+
+  return firstSegment;
 }

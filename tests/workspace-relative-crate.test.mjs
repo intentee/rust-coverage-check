@@ -34,12 +34,26 @@ test("returns null when filename equals the workspace root (no separator)", () =
   assert.equal(workspaceRelativeCrate("/workspace", "/workspace"), null);
 });
 
-test("returns the crate for a Windows-style backslash path with trailing separator", () => {
+test("matches a Windows path with mismatched drive-letter and directory case", () => {
   assert.equal(
     workspaceRelativeCrate(
-      "C:\\workspace\\my_crate\\src\\file.rs",
+      "c:\\Workspace\\my_crate\\src\\file.rs",
       "C:\\workspace\\",
     ),
     "my_crate",
+  );
+});
+
+test("returns null for a Windows file on a different drive", () => {
+  assert.equal(
+    workspaceRelativeCrate("D:\\elsewhere\\file.rs", "C:\\workspace"),
+    null,
+  );
+});
+
+test("treats POSIX paths case-sensitively", () => {
+  assert.equal(
+    workspaceRelativeCrate("/Workspace/my_crate/src/file.rs", "/workspace"),
+    null,
   );
 });
