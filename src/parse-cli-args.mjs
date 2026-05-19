@@ -1,3 +1,4 @@
+import { posix, win32 } from "node:path";
 import { parseArgs } from "node:util";
 
 import { CliArgsError } from "./cli-args-error.mjs";
@@ -119,6 +120,13 @@ export function parseCliArgs(argv) {
     throw new CliArgsError(
       "workspace_root_required",
       "--workspace-root is required",
+    );
+  }
+
+  if (!posix.isAbsolute(workspaceRoot) && !win32.isAbsolute(workspaceRoot)) {
+    throw new CliArgsError(
+      "workspace_root_not_absolute",
+      `--workspace-root must be an absolute path, got ${workspaceRoot}`,
     );
   }
 

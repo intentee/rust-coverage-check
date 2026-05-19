@@ -56,6 +56,15 @@ test("throws when --workspace-root is missing", () => {
   );
 });
 
+test("throws when --workspace-root is a relative path", () => {
+  assert.throws(
+    () => parseCliArgs(["out.json", "--workspace-root", "workspace"]),
+    (caught) =>
+      caught instanceof CliArgsError &&
+      caught.code === "workspace_root_not_absolute",
+  );
+});
+
 test("throws when a --gated entry has no =threshold", () => {
   assert.throws(
     () =>

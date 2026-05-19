@@ -1,6 +1,7 @@
 /**
  * @typedef {"usage"
  *   | "workspace_root_required"
+ *   | "workspace_root_not_absolute"
  *   | "gated_missing_threshold"
  *   | "gated_crate_name_required"
  *   | "gated_threshold_not_number"
