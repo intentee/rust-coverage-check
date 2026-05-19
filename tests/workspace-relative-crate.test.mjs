@@ -33,3 +33,50 @@ test("returns the crate name even when the file is deeply nested", () => {
 test("returns null when filename equals the workspace root (no separator)", () => {
   assert.equal(workspaceRelativeCrate("/workspace", "/workspace"), null);
 });
+
+test("matches a Windows path with mismatched drive-letter and directory case", () => {
+  assert.equal(
+    workspaceRelativeCrate(
+      "c:\\Workspace\\my_crate\\src\\file.rs",
+      "C:\\workspace\\",
+    ),
+    "my_crate",
+  );
+});
+
+test("returns null for a Windows file on a different drive", () => {
+  assert.equal(
+    workspaceRelativeCrate("D:\\elsewhere\\file.rs", "C:\\workspace"),
+    null,
+  );
+});
+
+test("treats POSIX paths case-sensitively", () => {
+  assert.equal(
+    workspaceRelativeCrate("/Workspace/my_crate/src/file.rs", "/workspace"),
+    null,
+  );
+});
+
+test("matches a UNC-style Windows workspace root", () => {
+  assert.equal(
+    workspaceRelativeCrate(
+      "\\\\server\\share\\repo\\my_crate\\src\\file.rs",
+      "\\\\server\\share\\repo",
+    ),
+    "my_crate",
+  );
+});
+
+test("throws when workspaceRoot is a relative path", () => {
+  assert.throws(() =>
+    workspaceRelativeCrate("/workspace/foo/bar.rs", "workspace"),
+  );
+});
+
+test("returns null when filename is a relative path", () => {
+  assert.equal(
+    workspaceRelativeCrate("crate/src/lib.rs", process.cwd()),
+    null,
+  );
+});

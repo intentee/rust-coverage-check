@@ -1,4 +1,12 @@
-import { relative, sep } from "node:path";
+import { posix, win32 } from "node:path";
+
+/**
+ * @param {string} workspaceRoot
+ * @returns {typeof posix | typeof win32}
+ */
+function pathModuleFor(workspaceRoot) {
+  return posix.isAbsolute(workspaceRoot) ? posix : win32;
+}
 
 /**
  * @param {string} filename
@@ -6,11 +14,29 @@ import { relative, sep } from "node:path";
  * @returns {string | null}
  */
 export function workspaceRelativeCrate(filename, workspaceRoot) {
-  if (!filename.startsWith(workspaceRoot + sep)) {
+  if (!posix.isAbsolute(workspaceRoot) && !win32.isAbsolute(workspaceRoot)) {
+    throw new Error(
+      `workspaceRoot must be an absolute path, got ${workspaceRoot}`,
+    );
+  }
+
+  const pathModule = pathModuleFor(workspaceRoot);
+
+  if (!pathModule.isAbsolute(filename)) {
     return null;
   }
 
-  const relativePath = relative(workspaceRoot, filename);
+  const relativePath = pathModule.relative(workspaceRoot, filename);
 
-  return relativePath.split(sep)[0];
+  if (pathModule.isAbsolute(relativePath)) {
+    return null;
+  }
+
+  const [firstSegment] = relativePath.split(pathModule.sep);
+
+  if (firstSegment === "" || firstSegment === "..") {
+    return null;
+  }
+
+  return firstSegment;
 }

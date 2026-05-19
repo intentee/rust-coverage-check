@@ -7,7 +7,7 @@
     "node": ">=24.0.0"
   },
   "bin": {
-    "rust-coverage-check": "./src/main.mjs"
+    "rust-coverage-check": "src/main.mjs"
   },
   "exports": {
     ".": "./src/index.mjs"
