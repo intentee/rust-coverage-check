@@ -55,6 +55,18 @@ test("returns an empty array when no entries are provided", () => {
   assert.deepEqual(mergeSegmentsAcrossEntries([]), []);
 });
 
+test("orders region-entry segments before non-region segments at the same position so startsSkippedRegion sees the structural marker first", () => {
+  const skippedRegionMarker = [10, 5, 0, false, true, false];
+  const nonRegionSegment = [10, 5, 5, true, false, false];
+
+  const merged = mergeSegmentsAcrossEntries([
+    [nonRegionSegment],
+    [skippedRegionMarker],
+  ]);
+
+  assert.deepEqual(merged, [skippedRegionMarker, nonRegionSegment]);
+});
+
 test("produces identical output regardless of the order of data[] entries with distinct-flag segments at the same line and column", () => {
   const regionEntrySegment = [10, 5, 3, true, true, false];
   const nonRegionSegment = [10, 5, 0, true, false, false];
