@@ -2,13 +2,17 @@ import { readFileSync } from "node:fs";
 
 import { lineCoverageFromSegments } from "./line-coverage-from-segments.mjs";
 import { mergeFunctionInstantiations } from "./merge-function-instantiations.mjs";
+import { mergeSegmentsAcrossEntries } from "./merge-segments-across-entries.mjs";
 import { regionCoverageFromSegments } from "./region-coverage-from-segments.mjs";
 import { workspaceRelativeCrate } from "./workspace-relative-crate.mjs";
 
 // llvm-cov's per-file `summary` is computed per instantiation, so it undercounts
 // a crate that is compiled both as a unit-test binary and as a dependency. The
-// `segments` array and the `functions` list, however, carry the merged counts
-// across every instantiation, so coverage is derived from those instead.
+// `segments` array and the `functions` list carry merged counts within a single
+// `data[]` entry, but llvm-cov export emits one entry per profiled binary, so a
+// file or function touched by multiple binaries appears in multiple entries.
+// Coverage is therefore derived by aggregating segments and function entries
+// across all data entries before computing per-crate stats.
 
 /**
  * @typedef {object} CrateStats
@@ -73,6 +77,46 @@ function crateStatsFor(crateStats, crateName) {
 }
 
 /**
+ * @param {LlvmCovJson} data
+ * @returns {Map<string, import("./line-coverage-from-segments.mjs").Segment[][]>}
+ */
+function collectSegmentsByFilename(data) {
+  /** @type {Map<string, import("./line-coverage-from-segments.mjs").Segment[][]>} */
+  const segmentsByFilename = new Map();
+
+  for (const dataEntry of data.data) {
+    for (const fileEntry of dataEntry.files) {
+      const existing = segmentsByFilename.get(fileEntry.filename);
+
+      if (existing) {
+        existing.push(fileEntry.segments);
+      } else {
+        segmentsByFilename.set(fileEntry.filename, [fileEntry.segments]);
+      }
+    }
+  }
+
+  return segmentsByFilename;
+}
+
+/**
+ * @param {LlvmCovJson} data
+ * @returns {import("./merge-function-instantiations.mjs").FunctionEntry[]}
+ */
+function collectFunctionEntries(data) {
+  /** @type {import("./merge-function-instantiations.mjs").FunctionEntry[]} */
+  const functionEntries = [];
+
+  for (const dataEntry of data.data) {
+    for (const functionEntry of dataEntry.functions) {
+      functionEntries.push(functionEntry);
+    }
+  }
+
+  return functionEntries;
+}
+
+/**
  * @param {string} jsonPath
  * @param {string} workspaceRoot
  * @returns {Map<string, CrateStats>}
@@ -83,45 +127,38 @@ export function parseLlvmCovJson(jsonPath, workspaceRoot) {
   /** @type {Map<string, CrateStats>} */
   const crateStats = new Map();
 
-  for (const dataEntry of data.data) {
-    for (const fileEntry of dataEntry.files) {
-      const crateName = workspaceRelativeCrate(
-        fileEntry.filename,
-        workspaceRoot,
-      );
+  for (const [filename, segmentArrays] of collectSegmentsByFilename(data)) {
+    const crateName = workspaceRelativeCrate(filename, workspaceRoot);
 
-      if (crateName === null) {
-        continue;
-      }
-
-      const stats = crateStatsFor(crateStats, crateName);
-
-      addCoverage(
-        stats.regions,
-        regionCoverageFromSegments(fileEntry.segments),
-      );
-      addCoverage(stats.lines, lineCoverageFromSegments(fileEntry.segments));
+    if (crateName === null) {
+      continue;
     }
 
-    for (const mergedFunction of mergeFunctionInstantiations(
-      dataEntry.functions,
-    )) {
-      const crateName = workspaceRelativeCrate(
-        mergedFunction.filename,
-        workspaceRoot,
-      );
+    const mergedSegments = mergeSegmentsAcrossEntries(segmentArrays);
+    const stats = crateStatsFor(crateStats, crateName);
 
-      if (crateName === null) {
-        continue;
-      }
+    addCoverage(stats.regions, regionCoverageFromSegments(mergedSegments));
+    addCoverage(stats.lines, lineCoverageFromSegments(mergedSegments));
+  }
 
-      const stats = crateStatsFor(crateStats, crateName);
+  for (const mergedFunction of mergeFunctionInstantiations(
+    collectFunctionEntries(data),
+  )) {
+    const crateName = workspaceRelativeCrate(
+      mergedFunction.filename,
+      workspaceRoot,
+    );
 
-      stats.functions.count += 1;
+    if (crateName === null) {
+      continue;
+    }
 
-      if (mergedFunction.covered) {
-        stats.functions.covered += 1;
-      }
+    const stats = crateStatsFor(crateStats, crateName);
+
+    stats.functions.count += 1;
+
+    if (mergedFunction.covered) {
+      stats.functions.covered += 1;
     }
   }
 
