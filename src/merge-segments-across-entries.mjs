@@ -33,7 +33,15 @@ function compareSegmentsByPosition(left, right) {
     return left[LINE] - right[LINE];
   }
 
-  return left[COLUMN] - right[COLUMN];
+  if (left[COLUMN] !== right[COLUMN]) {
+    return left[COLUMN] - right[COLUMN];
+  }
+
+  if (left[IS_REGION_ENTRY] !== right[IS_REGION_ENTRY]) {
+    return Number(left[IS_REGION_ENTRY]) - Number(right[IS_REGION_ENTRY]);
+  }
+
+  return Number(left[IS_GAP_REGION]) - Number(right[IS_GAP_REGION]);
 }
 
 /**

@@ -54,3 +54,19 @@ test("treats a gap-region segment as distinct from a non-gap segment at the same
 test("returns an empty array when no entries are provided", () => {
   assert.deepEqual(mergeSegmentsAcrossEntries([]), []);
 });
+
+test("produces identical output regardless of the order of data[] entries with distinct-flag segments at the same line and column", () => {
+  const regionEntrySegment = [10, 5, 3, true, true, false];
+  const nonRegionSegment = [10, 5, 0, true, false, false];
+
+  const forward = mergeSegmentsAcrossEntries([
+    [regionEntrySegment],
+    [nonRegionSegment],
+  ]);
+  const reverse = mergeSegmentsAcrossEntries([
+    [nonRegionSegment],
+    [regionEntrySegment],
+  ]);
+
+  assert.deepEqual(forward, reverse);
+});
