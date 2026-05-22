@@ -1,0 +1,61 @@
+{
+  "data": [
+    {
+      "files": [
+        {
+          "filename": "/workspace/shared_crate/src/lib.rs",
+          "segments": [
+            [10, 5, 3, true, true, false],
+            [12, 6, 0, false, false, false],
+            [20, 5, 0, true, true, false],
+            [22, 6, 0, false, false, false]
+          ]
+        }
+      ],
+      "functions": [
+        {
+          "name": "_RNvCsbinary0_shared_crate_foo",
+          "count": 3,
+          "filenames": ["/workspace/shared_crate/src/lib.rs"],
+          "regions": [[10, 5, 12, 6, 3, 0, 0, 0]]
+        },
+        {
+          "name": "_RNvCsbinary0_shared_crate_bar",
+          "count": 0,
+          "filenames": ["/workspace/shared_crate/src/lib.rs"],
+          "regions": [[20, 5, 22, 6, 0, 0, 0, 0]]
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "filename": "/workspace/shared_crate/src/lib.rs",
+          "segments": [
+            [10, 5, 0, true, true, false],
+            [12, 6, 0, false, false, false],
+            [20, 5, 0, true, true, false],
+            [22, 6, 0, false, false, false]
+          ]
+        }
+      ],
+      "functions": [
+        {
+          "name": "_RNvCsbinary1_shared_crate_foo",
+          "count": 0,
+          "filenames": ["/workspace/shared_crate/src/lib.rs"],
+          "regions": [[10, 5, 12, 6, 0, 0, 0, 0]]
+        },
+        {
+          "name": "_RNvCsbinary1_shared_crate_bar",
+          "count": 0,
+          "filenames": ["/workspace/shared_crate/src/lib.rs"],
+          "regions": [[20, 5, 22, 6, 0, 0, 0, 0]]
+        }
+      ]
+    }
+  ],
+  "type": "llvm.coverage.json.export",
+  "version": "3.0.1",
+  "cargo_llvm_cov": {}
+}

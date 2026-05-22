@@ -17,6 +17,12 @@ const WINDOWS_FIXTURE_PATH = resolve(
   "windows-llvm-cov.json",
 );
 
+const MULTI_BINARY_FIXTURE_PATH = resolve(
+  dirname(fileURLToPath(import.meta.url)),
+  "fixtures",
+  "multi-binary-llvm-cov.json",
+);
+
 const WORKSPACE_ROOT = "/workspace";
 
 test("groups files by their first path component", () => {
@@ -58,4 +64,21 @@ test("groups files by crate for a Windows-style llvm-cov report", () => {
 
   assert.ok(crateStats.has("spiffe_svid_manager"));
   assert.ok(crateStats.has("spiffe_svid_manager_tests"));
+});
+
+test("merges coverage across data entries when the same source file is reported by multiple test binaries", () => {
+  // The multi-binary fixture reports `shared_crate/src/lib.rs` twice: binary 0
+  // executes `foo` (count > 0) while binary 1 only compiles it (count 0). Both
+  // binaries see `bar` as never executed. Without cross-entry merging, foo and
+  // bar would each be counted twice and the file's 2 regions / 6 lines would
+  // be doubled to 4 / 12.
+  const crateStats = parseLlvmCovJson(
+    MULTI_BINARY_FIXTURE_PATH,
+    WORKSPACE_ROOT,
+  );
+  const sharedCrate = crateStats.get("shared_crate");
+
+  assert.deepEqual(sharedCrate.functions, { count: 2, covered: 1 });
+  assert.deepEqual(sharedCrate.regions, { count: 2, covered: 1 });
+  assert.deepEqual(sharedCrate.lines, { count: 6, covered: 3 });
 });
