@@ -14,7 +14,7 @@ test("keeps the highest count when the same position appears in multiple entries
   assert.deepEqual(merged, [[10, 5, 7, true, true, false]]);
 });
 
-test("OR's hasCount across entries when one entry lacks a counted segment at the position", () => {
+test("ORs hasCount across entries when one entry lacks a counted segment at the position", () => {
   const merged = mergeSegmentsAcrossEntries([
     [[10, 5, 0, false, true, false]],
     [[10, 5, 0, true, true, false]],
